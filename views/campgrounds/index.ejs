@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate') %>
+<script>
+  const mapboxToken = "<%- process.env.MAPBOX_TOKEN %>";
+  const geometryData = { features: <%- JSON.stringify(campGrounds) %> };
+</script>
+
+<div class="map" id="map" crossorigin="anonymous"></div>
+<h1>All Campgrounds</h1>
+<ul>
+  <% for(let campGround of campGrounds) {%>
+  <div class="card mb-3">
+    <div class="row">
+      <div class="col-md-4">
+        <img
+          src="<%= campGround.images.length ? campGround.images[0].url : 'https://res.cloudinary.com/cloudie/image/upload/v1656560692/yelp-camp/sexgakg0bppbq1xbghgf.jpg' %>"
+          alt="..."
+          class="img-fluid"
+          crossorigin="anonymous"
+        />
+      </div>
+      <div class="col-md-8">
+        <h5 class="card-title"><%= campGround.title %></h5>
+        <p class="card-text"><%= campGround.description %></p>
+        <p class="card-text">
+          <small class="text-muted"><%= campGround.location %></small>
+        </p>
+        <a href="campgrounds/<%= campGround.id %>" class="btn btn-primry"
+          >View this campround</a
+        >
+      </div>
+    </div>
+  </div>
+  <% } %>
+</ul>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="/css/clustermap.css"
+  crossorigin="anonymous"
+/>
+<script src="/js/clustermap.js" crossorigin="anonymous"></script>
