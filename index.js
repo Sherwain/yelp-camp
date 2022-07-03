@@ -25,7 +25,7 @@ if (process.env.NODE_ENV != "production") {
 }
 
 const app = express();
-app.listen("3000", () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("Successully listening on port 3000");
 });
 
