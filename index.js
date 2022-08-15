@@ -26,7 +26,7 @@ if (process.env.NODE_ENV != "production") {
 
 const app = express();
 app.listen(process.env.PORT || 3000, () => {
-  console.log("Successully listening on port 3000");
+  console.log("Successfully listening on port 3000");
 });
 
 //  .connect("mongodb://localhost:27017/yelp-camp")
@@ -145,7 +145,7 @@ app.get("/makeuser", async (req, res) => {
   res.send(newUser);
 });
 
-// catchall for routes that dont match any of our routes
+// catchall for routes that don't match any of our routes
 app.all("*", (err, req, res, next) => {
   next(new AppError("Page Not Found", 404));
 });

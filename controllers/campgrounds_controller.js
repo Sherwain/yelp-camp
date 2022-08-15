@@ -14,8 +14,8 @@ async function update(req, res, next) {
   const id = req.params.id;
   const { campground } = req.body;
 
-  const campgrounOld = await getCurrentCampground(req, id);
-  campground.images.push(...campgrounOld.images);
+  const campgroundOld = await getCurrentCampground(req, id);
+  campground.images.push(...campgroundOld.images);
   const campGroundNew = await CampGround.findByIdAndUpdate(id, campground, {
     new: true,
     runValidators: true,
